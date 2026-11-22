@@ -1,0 +1,11 @@
+﻿# Compilation
+/target/
+*.pdb
+
+# Exécutables et archives (copies locales, pas des sources)
+*.exe
+*.zip
+
+# Fichiers produits à l'exécution
+diagnostic.txt
+position-compacte.txt
