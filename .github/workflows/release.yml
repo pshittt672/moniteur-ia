@@ -1,0 +1,30 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compiler
+        run: cargo build --release --locked
+      - name: Publier la release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $tag = "${{ github.ref_name }}"
+          Copy-Item target\release\moniteur-ia.exe moniteur-ia.exe
+          (Get-FileHash moniteur-ia.exe -Algorithm SHA256).Hash.ToLower() + "  moniteur-ia.exe" | Out-File -Encoding ascii moniteur-ia.exe.sha256
+          $notes = if (Test-Path "notes\$tag.md") { "notes\$tag.md" } else { $null }
+          if ($notes) {
+            gh release create $tag moniteur-ia.exe moniteur-ia.exe.sha256 --title "Moniteur IA $tag" --notes-file $notes
+          } else {
+            gh release create $tag moniteur-ia.exe moniteur-ia.exe.sha256 --title "Moniteur IA $tag" --generate-notes
+          }
