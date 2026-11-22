@@ -40,7 +40,7 @@ Un outil absent apparaît simplement comme « Arrêté » ou « Fermé », sans 
 
 1. Téléchargez `moniteur-ia.exe` depuis la page **Releases** du dépôt.
 2. Placez-le dans un dossier de votre choix, par exemple `C:\Outils\moniteur-ia\`.
-3. Lancez-le. Au premier lancement, Windows SmartScreen peut afficher un avertissement, car l'exe n'est pas signé. Cliquez alors sur « Informations complémentaires », puis sur « Exécuter quand même ».
+3. Lancez-le. L'exe des releases est signé numériquement (certificat de signature de code HARICA, avec horodatage) : l'éditeur affiché par Windows est « Yann TANGUY ». Tant que le fichier est récent, Windows SmartScreen peut encore afficher un avertissement, le temps que sa réputation s'établisse. Cliquez alors sur « Informations complémentaires », puis sur « Exécuter quand même ».
 
 | Commande | Effet |
 |---|---|
