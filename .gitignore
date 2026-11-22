@@ -9,3 +9,6 @@
 # Fichiers produits à l'exécution
 diagnostic.txt
 position-compacte.txt
+
+# Exe signé à déposer dans la release (produit par signer-release.ps1)
+/release/
